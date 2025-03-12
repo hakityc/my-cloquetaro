@@ -39,10 +39,10 @@ const app = new Hono()
         }))
       }
       return c.json({
-        code: '401',
+        code: 400,
         message: '用户名或者密码不正确',
         data: null,
-      }, 401)
+      }, 400)
     }
   )
 
