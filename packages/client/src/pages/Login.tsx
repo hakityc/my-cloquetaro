@@ -4,6 +4,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { css } from "goober";
 import { useNavigate } from "react-router-dom";
 import { client } from "../api";
+import { useToken } from "../hooks/useToken";
 interface LoginFormValues {
   username: string;
   password: string;
@@ -16,12 +17,16 @@ export default function LoginPage() {
   const onFinish = async (values: LoginFormValues) => {
     console.log(values);
     // setLoading(true);
-    const res = await client.auth.login.$post({
-      json: {
-        username: values.username, // 用户名
-        password: values.password, // 密码
-      }
-    }).then(res => res.json());
+    const res = await client.auth.login
+      .$post({
+        json: {
+          username: values.username, // 用户名
+          password: values.password, // 密码
+        },
+      })
+      .then((res) => res.json());
+    const { setToken } = useToken();
+    setToken(res.data?.token || "");
     console.log(res.data?.token);
     navigate("/");
   };
@@ -117,11 +122,7 @@ export default function LoginPage() {
                   transition: all 0.3s ease;
 
                   &:hover {
-                    background: linear-gradient(
-                      90deg,
-                      #424242 0%,
-                      #505050 100%
-                    );
+                    background: linear-gradient(90deg, #424242 0%, #505050 100%);
                     transform: translateY(-2px);
                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
                   }
