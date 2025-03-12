@@ -10,7 +10,6 @@ export const client = hc<AppType>('http://localhost:3000', {
             ...init,
             headers: {
                 ...init?.headers,
-                'Content-Type': 'application/json',
                 ...(token ? { 'Authorization': `Bearer ${token}` } : {})
             }
         }
