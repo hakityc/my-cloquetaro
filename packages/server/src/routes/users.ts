@@ -1,5 +1,6 @@
 // books.ts
 import { Hono } from 'hono'
+import { okRes } from '../common/res'
 
 interface UserInfo {
     id: number
@@ -24,11 +25,7 @@ const mockUserInfo: UserInfo = {
 const app = new Hono()
     .get('/', (c) => c.json('user'))
     .get('/info', (c) => {
-        return c.json({
-            code: 200,
-            message: 'success',
-            data: mockUserInfo
-        })
+        return c.json(okRes({ userInfo: mockUserInfo }))
     })
 
 export default app
