@@ -6,13 +6,20 @@ export const client = hc<AppType>('http://localhost:3000', {
     fetch: async (input: RequestInfo | URL, init?: RequestInit) => {
         const token = tokenUtils.getToken()
 
-        const request = {
-            ...init,
-            headers: {
-                ...init?.headers,
-                ...(token ? { 'Authorization': `Bearer ${token}` } : {})
-            }
+        // 使用 Headers 构造函数创建 headers 对象
+        const headers = new Headers(init?.headers || {})
+
+        // 如果不存在 Content-Type 则设置默认值
+        if (!headers.has('Content-Type')) {
+            headers.set('Content-Type', 'application/json')
         }
+        // 如果存在 token，则设置 Authorization
+        if (token) {
+            console.log('token is exist')
+            headers.set('Authorization', `Bearer ${token}`)
+        }
+
+        const request = { ...init, headers }
 
         const res = await fetch(input, request)
         if (!res.ok) {
