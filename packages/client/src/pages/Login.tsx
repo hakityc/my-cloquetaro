@@ -14,6 +14,12 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
+  const fetchUserInfo = async () => {
+    const res = await client.users.info
+    .$get()
+    .then((res) => res.json());
+    console.log(res)
+  }
   const onFinish = async (values: LoginFormValues) => {
     console.log(values);
     // setLoading(true);
@@ -28,6 +34,7 @@ export default function LoginPage() {
     const { setToken } = useToken();
     setToken(res.data?.token || "");
     console.log(res.data?.token);
+    await fetchUserInfo()
     navigate("/");
   };
 
