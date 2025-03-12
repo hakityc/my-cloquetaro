@@ -1,0 +1,23 @@
+{
+  "name": "@test-hono/server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.2.0",
+    "@hono/zod-validator": "^0.4.3",
+    "@types/jsonwebtoken": "^9.0.9",
+    "hono": "^3.9.0",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.9",
+    "tsx": "^3.14.0",
+    "typescript": "^5.2.2"
+  }
+}

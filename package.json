@@ -1,0 +1,10 @@
+{
+  "name": "test-hono",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:client": "pnpm --filter @test-hono/client dev",
+    "dev:server": "pnpm --filter @test-hono/server dev",
+    "dev": "pnpm -r --parallel dev"
+  }
+}
