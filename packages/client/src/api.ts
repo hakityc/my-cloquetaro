@@ -1,11 +1,10 @@
 import type { AppType } from '@test-hono/server/src'
 import { hc } from 'hono/client'
-import { useToken } from './hooks/useToken'
+import { tokenUtils } from './utils/token'
 
 export const client = hc<AppType>('http://localhost:3000', {
     fetch: async (input: RequestInfo | URL, init?: RequestInit) => {
-        const { getToken, removeToken } = useToken()
-        const token = getToken()
+        const token = tokenUtils.getToken()
 
         const request = {
             ...init,
@@ -21,7 +20,7 @@ export const client = hc<AppType>('http://localhost:3000', {
             const error = await res.json()
             if (res.status === 401) {
                 // 清除 token
-                removeToken()
+                tokenUtils.removeToken()
                 // 跳转到登录页
                 window.location.href = '/login'
             }

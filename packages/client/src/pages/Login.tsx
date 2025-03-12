@@ -4,7 +4,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { css } from "goober";
 import { useNavigate } from "react-router-dom";
 import { client } from "../api";
-import { useToken } from "../hooks/useToken";
+import { tokenUtils } from "../utils/token";
 interface LoginFormValues {
   username: string;
   password: string;
@@ -31,8 +31,8 @@ export default function LoginPage() {
         },
       })
       .then((res) => res.json());
-    const { setToken } = useToken();
-    setToken(res.data?.token || "");
+    
+    tokenUtils.setToken(res.data?.token || "");
     console.log(res.data?.token);
     await fetchUserInfo()
     navigate("/");
