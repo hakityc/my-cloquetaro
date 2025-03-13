@@ -4,6 +4,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { css } from "goober";
 import { useNavigate } from "react-router-dom";
 import { client } from "../api";
+import { tokenUtils } from "../utils/token";
 interface LoginFormValues {
   username: string;
   password: string;
@@ -13,16 +14,27 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
+  const fetchUserInfo = async () => {
+    const res = await client.users.info
+    .$get()
+    .then((res) => res.json());
+    console.log(res)
+  }
   const onFinish = async (values: LoginFormValues) => {
     console.log(values);
     // setLoading(true);
-    const res = await client.auth.login.$post({
-      json: {
-        username: values.username, // 用户名
-        password: values.password, // 密码
-      }
-    }).then(res => res.json());
+    const res = await client.auth.login
+      .$post({
+        json: {
+          username: values.username, // 用户名
+          password: values.password, // 密码
+        },
+      })
+      .then((res) => res.json());
+    
+    tokenUtils.setToken(res.data?.token || "");
     console.log(res.data?.token);
+    await fetchUserInfo()
     navigate("/");
   };
 
@@ -117,11 +129,7 @@ export default function LoginPage() {
                   transition: all 0.3s ease;
 
                   &:hover {
-                    background: linear-gradient(
-                      90deg,
-                      #424242 0%,
-                      #505050 100%
-                    );
+                    background: linear-gradient(90deg, #424242 0%, #505050 100%);
                     transform: translateY(-2px);
                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
                   }
