@@ -1,6 +1,18 @@
 name = "my-cloquetaro"
-main = "src/index.ts"
+main = "dist/index.js"
 compatibility_date = "2023-01-01"
+account_id ="221617d49b0255edff33e5cd73b08eb5"
+workers_dev = true   
+
+[build]
+command = "pnpm run build"
+cwd = "."
+watch_dir = "src"
+
+[build.upload]
+dir = "dist"
+main = "index.js"
+format = "modules"
 
 [vars]
 NODE_ENV = "production"
@@ -18,4 +30,4 @@ vars = { NODE_ENV = "production" }
 # 如果需要绑定 KV 存储，取消下面的注释并修改名称
 # [[kv_namespaces]]
 # binding = "MY_KV"
-# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"   
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
