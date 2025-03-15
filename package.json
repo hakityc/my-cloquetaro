@@ -9,5 +9,9 @@
     "build:client": "pnpm --filter @test-hono/client build",
     "build:server": "pnpm --filter @test-hono/server build",
     "build": "pnpm -r build"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250313.0",
+    "wrangler": "^4.0.0"
   }
 }

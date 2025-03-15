@@ -1,0 +1,21 @@
+name = "my-cloquetaro"
+main = "src/index.ts"
+compatibility_date = "2023-01-01"
+
+[vars]
+NODE_ENV = "production"
+
+# 开发环境配置
+[env.development]
+name = "my-cloquetaro-dev"
+vars = { NODE_ENV = "development" }
+
+# 生产环境配置
+[env.production]
+name = "my-cloquetaro-prod"
+vars = { NODE_ENV = "production" }
+
+# 如果需要绑定 KV 存储，取消下面的注释并修改名称
+# [[kv_namespaces]]
+# binding = "MY_KV"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"   
