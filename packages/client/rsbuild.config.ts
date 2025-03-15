@@ -5,5 +5,10 @@ export default defineConfig({
   server: {
     port: 8080,
   },
+  output: {
+    distPath: {
+      root: '../../dist/client'
+    }
+  },
   plugins: [pluginReact()],
 });
