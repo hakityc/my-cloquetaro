@@ -1,5 +1,5 @@
 name = "my-cloquetaro"
-main = "packages/server/dist/index.js"
+main = "dist/index.js"  
 compatibility_date = "2025-03-17"
 compatibility_flags = ["nodejs_compat"]
 account_id = "221617d49b0255edff33e5cd73b08eb5"
