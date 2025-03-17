@@ -7,23 +7,21 @@ account_id = "221617d49b0255edff33e5cd73b08eb5"
 #workers_dev = true
 #minify = true
 
-[build]
-command = "pnpm run build"
-cwd = "."
-watch_dir = "src"
+# [build]
+# command = "pnpm run build"
+# cwd = "."
+# watch_dir = "src"
 
-[vars]
-NODE_ENV = "production"
 
 # 开发环境配置
-[env.development]
-name = "my-cloquetaro-dev"
-vars = { NODE_ENV = "development" }
+# [env.development]
+# name = "my-cloquetaro-dev"
+# vars = { NODE_ENV = "development" }
 
 # 生产环境配置
-[env.production]
-name = "my-cloquetaro-prod"
-vars = { NODE_ENV = "production" }
+# [env.production]
+# name = "my-cloquetaro-prod"
+# vars = { NODE_ENV = "production" }
 
 # 如果需要绑定 KV 存储，取消下面的注释并修改名称
 # [[kv_namespaces]]
