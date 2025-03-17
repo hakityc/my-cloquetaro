@@ -1,6 +1,6 @@
 name = "my-cloquetaro"
 main = "dist/index.js"
-compatibility_date = "2023-01-01"
+compatibility_date = "2025-03-17"
 account_id = "221617d49b0255edff33e5cd73b08eb5"
 workers_dev = true
 # 添加兼容性标志
