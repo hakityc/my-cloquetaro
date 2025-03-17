@@ -21,7 +21,7 @@ export default {
 }
 export type AppType = typeof routes
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'production') {
   serve(app, () => {
     console.log('Server is running on http://localhost:3000')
   })
