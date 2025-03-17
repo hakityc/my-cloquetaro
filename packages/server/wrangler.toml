@@ -12,6 +12,9 @@ command = "pnpm run build"
 cwd = "."
 watch_dir = "src"
 
+# 添加这个配置来指定使用 ES modules
+format = "modules"
+
 [vars]
 NODE_ENV = "production"
 
