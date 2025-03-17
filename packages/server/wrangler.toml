@@ -1,8 +1,8 @@
 name = "my-cloquetaro"
 main = "dist/index.js"
 compatibility_date = "2023-01-01"
-account_id ="221617d49b0255edff33e5cd73b08eb5"
-workers_dev = true   
+account_id = "221617d49b0255edff33e5cd73b08eb5"
+workers_dev = true
 # 添加兼容性标志
 compatibility_flags = ["nodejs_compat"]
 
@@ -10,11 +10,6 @@ compatibility_flags = ["nodejs_compat"]
 command = "pnpm run build"
 cwd = "."
 watch_dir = "src"
-
-[build.upload]
-dir = "dist"
-main = "index.js"
-format = "modules"
 
 [vars]
 NODE_ENV = "production"
