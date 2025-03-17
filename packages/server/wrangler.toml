@@ -7,6 +7,9 @@ account_id = "221617d49b0255edff33e5cd73b08eb5"
 [observability]
 enabled = true
 head_sampling_rate = 1 # optional. default = 1.
+# 添加超时配置
+[workers_dev]
+max_duration = 30000  # 30 秒超时
 #main = "src/index.ts"
 #workers_dev = true
 #minify = true
