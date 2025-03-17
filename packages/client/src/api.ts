@@ -2,7 +2,9 @@ import type { AppType } from '@test-hono/server/src'
 import { hc } from 'hono/client'
 import { tokenUtils } from './utils/token'
 
-export const client = hc<AppType>('http://localhost:3000', {
+const API_URL = import.meta.env.API_URL || 'http://localhost:3000'
+
+export const client = hc<AppType>(API_URL, {
     fetch: async (input: RequestInfo | URL, init?: RequestInit) => {
         const token = tokenUtils.getToken()
 
