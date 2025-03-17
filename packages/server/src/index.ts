@@ -16,9 +16,7 @@ app.use('/books/*', authMiddleware)
 
 const routes = app.route('/auth', auth).route('/users', users).route('/books', books).route('/posts', posts)
 
-export default {
-  fetch: app.fetch
-}
+export default app
 export type AppType = typeof routes
 
 // if (process.env.NODE_ENV !== 'production') {
