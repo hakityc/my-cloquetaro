@@ -2,7 +2,13 @@ import type { AppType } from '@test-hono/server/src'
 import { hc } from 'hono/client'
 import { tokenUtils } from './utils/token'
 
-const API_URL = import.meta.env.API_URL || 'http://localhost:3000'
+let API_URL = ''
+
+if (import.meta.env.MODE === 'development') {
+    API_URL = 'http://localhost:3000'
+} else {
+    API_URL = 'https://my-cloquetaro.hakityc.workers.dev'
+}
 
 export const client = hc<AppType>(API_URL, {
     fetch: async (input: RequestInfo | URL, init?: RequestInit) => {
