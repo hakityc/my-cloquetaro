@@ -1,12 +1,11 @@
 name = "my-cloquetaro"
-# main = "dist/index.js"
+main = "dist/index.js"
 compatibility_date = "2025-03-17"
-account_id = "221617d49b0255edff33e5cd73b08eb5"
-workers_dev = true
-# 添加兼容性标志
 compatibility_flags = ["nodejs_compat"]
-main = "src/index.ts"
-minify = true
+account_id = "221617d49b0255edff33e5cd73b08eb5"
+#main = "src/index.ts"
+#workers_dev = true
+#minify = true
 
 [build]
 command = "pnpm run build"
