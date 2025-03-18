@@ -1,0 +1,16 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: cloquetaro-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cloquetaro
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev123
+    ports:
+      - "3307:3306"    # 修改外部端口为 3307
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:

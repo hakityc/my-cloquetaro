@@ -5,6 +5,12 @@
   "scripts": {
     "dev:client": "pnpm --filter @test-hono/client dev",
     "dev:server": "pnpm --filter @test-hono/server dev",
-    "dev": "pnpm -r --parallel dev"
+    "dev": "pnpm -r --parallel --no-bail dev"
+  },
+  "devDependencies": {
+    "prisma": "^6.5.0"
+  },
+  "dependencies": {
+    "@prisma/client": "6.5.0"
   }
 }
