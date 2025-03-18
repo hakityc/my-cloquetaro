@@ -1,17 +1,26 @@
 name = "my-cloquetaro"
-main = "packages/server/dist/index.js"  # 修改了路径
+main = "packages/server/dist/index.js"
 compatibility_date = "2025-03-17"
 compatibility_flags = ["nodejs_compat"]
 account_id = "221617d49b0255edff33e5cd73b08eb5"
 
+[build]
+command = "pnpm install && pnpm run build"  # 修改构建命令
+cwd = "."  # 改为根目录
+node_version = "20"
+
+[site]  # 添加 Pages 配置
+bucket = "./packages/client/dist"  # 客户端构建输出目录
+entry-point = "packages/server"    # Worker 入口点
+
+[build.upload]  # 添加构建产物上传配置
+format = "modules"
+main = "./packages/server/dist/index.js"
+dir = "./packages/server/dist"
+
 [observability]
 enabled = true
-head_sampling_rate = 1 # optional. default = 1.
-
-[build]
-command = "pnpm run build"
-cwd = "packages/server"  # 修改了路径
-node_version = "20" 
+head_sampling_rate = 1
 
 # 开发环境配置
 [env.development]
