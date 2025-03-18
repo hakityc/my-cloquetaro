@@ -21,45 +21,69 @@ export interface UpdateOfferInput extends Partial<CreateOfferInput> { }
 export const offerService = {
     // 创建新的 offer
     async createOffer(data: CreateOfferInput) {
-        return prisma.offer.create({
-            data: {
-                ...data,
-            }
-        })
+        try {
+            return await prisma.offer.create({
+                data: {
+                    ...data,
+                }
+            })
+        } catch (error) {
+            console.error('创建 Offer 失败:', error)
+            throw error
+        }
     },
 
     // 获取所有 offers
     async getAllOffers() {
-        return prisma.offer.findMany({
-        })
+        try {
+            return await prisma.offer.findMany({})
+        } catch (error) {
+            console.error('获取所有 Offers 失败:', error)
+            throw error
+        }
     },
 
     // 根据 ID 获取单个 offer
     async getOfferById(id: number) {
-        return prisma.offer.findUnique({
-            where: { id },
-        })
+        try {
+            return await prisma.offer.findUnique({
+                where: { id },
+            })
+        } catch (error) {
+            console.error(`获取 Offer(ID: ${id}) 失败:`, error)
+            throw error
+        }
     },
 
     // 更新 offer
     async updateOffer(id: number, data: UpdateOfferInput) {
-        const { offerValues, ...updateData } = data
-        return prisma.offer.update({
-            where: { id },
-            data: {
-                ...updateData,
-                offerValues: offerValues ? {
-                    deleteMany: {},
-                    create: offerValues
-                } : undefined
-            },
-        })
+        try {
+            const { offerValues, ...updateData } = data
+            return await prisma.offer.update({
+                where: { id },
+                data: {
+                    ...updateData,
+                    offerValues: offerValues ? {
+                        deleteMany: {},
+                        create: offerValues
+                    } : undefined
+                },
+            })
+        } catch (error) {
+            console.error(`更新 Offer(ID: ${id}) 失败:`, error)
+            throw error
+        }
     },
 
     // 删除 offer
     async deleteOffer(id: number) {
-        return prisma.offer.delete({
-            where: { id },
-        })
+        try {
+            return await prisma.offer.delete({
+                where: { id },
+            })
+        } catch (error) {
+            console.error(`删除 Offer(ID: ${id}) 失败:`, error)
+            throw error
+        }
     }
 }
