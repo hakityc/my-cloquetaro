@@ -11,11 +11,10 @@ head_sampling_rate = 1 # optional. default = 1.
 #workers_dev = true
 #minify = true
 
-# [build]
-# command = "pnpm run build"
-# cwd = "."
-# watch_dir = "src"
-
+[build]
+command = "pnpm run build"
+cwd = "."
+node_version = "20" 
 
 # 开发环境配置
 [env.development]
