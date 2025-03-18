@@ -1,5 +1,5 @@
 name = "my-cloquetaro"
-main = "dist/index.js"  
+main = "packages/server/dist/index.js"  # 修改了路径
 compatibility_date = "2025-03-17"
 compatibility_flags = ["nodejs_compat"]
 account_id = "221617d49b0255edff33e5cd73b08eb5"
@@ -7,19 +7,16 @@ account_id = "221617d49b0255edff33e5cd73b08eb5"
 [observability]
 enabled = true
 head_sampling_rate = 1 # optional. default = 1.
-#main = "src/index.ts"
-#workers_dev = true
-#minify = true
 
 [build]
 command = "pnpm run build"
-cwd = "."
+cwd = "packages/server"  # 修改了路径
 node_version = "20" 
 
 # 开发环境配置
 [env.development]
 name = "my-cloquetaro-dev"
-vars = {NODE_ENV = "development",DATABASE_URL = "file:./dev.db" }
+vars = {NODE_ENV = "development", DATABASE_URL = "file:./dev.db" }
 
 [env.production]
 name = "my-cloquetaro-prod"
