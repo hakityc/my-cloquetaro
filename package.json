@@ -16,7 +16,10 @@
     "wrangler": "^4.1.0"
   },
   "dependencies": {
+    "@planetscale/database": "^1.19.0",
     "@prisma/adapter-d1": "^6.5.0",
-    "@prisma/client": "6.5.0"
+    "@prisma/adapter-planetscale": "^6.5.0",
+    "@prisma/client": "6.5.0",
+    "mysql2": "^3.13.0"
   }
 }
