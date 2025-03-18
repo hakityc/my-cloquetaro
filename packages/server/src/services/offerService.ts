@@ -8,7 +8,7 @@ export interface CreateOfferInput {
     url: string
     countries?: string
     payoutType?: PayoutType
-    payoutAmount?: string            // 使用 string 类型
+    payoutAmount?: number
     allowUpsells?: boolean
     conversionCap?: boolean
     notes?: string
