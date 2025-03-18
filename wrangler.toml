@@ -12,11 +12,6 @@ cwd = "."
 bucket = "packages/client/dist"
 entry-point = "packages/server"
 
-# [build.upload]
-# format = "modules"
-# main = "packages/server/dist/index.js"
-# dir = "packages/server/dist"
-
 [observability]
 enabled = true
 head_sampling_rate = 1
