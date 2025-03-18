@@ -13,7 +13,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250313.0",
     "prisma": "^6.5.0",
-    "wrangler": "^4.0.0"
+    "wrangler": "^4.1.0"
   },
   "dependencies": {
     "@prisma/adapter-d1": "^6.5.0",

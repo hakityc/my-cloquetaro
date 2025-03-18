@@ -11,10 +11,10 @@ cwd = "."
 [site]
 bucket = "packages/client/dist"
 
-[build.upload]
-format = "modules"
-main = "packages/server/dist/index.js"
-dir = "packages/server/dist"
+# [build.upload]
+# format = "modules"
+# main = "packages/server/dist/index.js"
+# dir = "packages/server/dist"
 
 [observability]
 enabled = true
