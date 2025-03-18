@@ -10,6 +10,7 @@ cwd = "."
 
 [site]
 bucket = "packages/client/dist"
+entry-point = "packages/server"
 
 # [build.upload]
 # format = "modules"
