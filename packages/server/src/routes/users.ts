@@ -1,31 +1,40 @@
-// books.ts
+// users.ts
 import { Hono } from 'hono'
+import { userService } from '../services/userService'
 import { okRes } from '../common/res'
+import { zValidator } from '@hono/zod-validator'
+import { z } from 'zod'
 
-interface UserInfo {
-    id: number
-    username: string
-    nickname: string
-    avatar: string
-    role: string
-    email: string
-    createTime: string
-}
-
-const mockUserInfo: UserInfo = {
-    id: 1,
-    username: 'admin',
-    nickname: '管理员',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=admin',
-    role: 'admin',
-    email: 'admin@example.com',
-    createTime: '2024-01-01 00:00:00'
-}
-
-const app = new Hono()
-    .get('/', (c) => c.json('user'))
-    .get('/info', (c) => {
-        return c.json(okRes({ userInfo: mockUserInfo }))
-    })
+const app = new Hono().post('/', zValidator('json', z.object({
+  username: z.string(),
+  password: z.string(),
+  nickname: z.string().optional(),
+  email: z.string().optional(),
+})), async (c) => {
+  const data = await c.req.json()
+  const user = await userService.create(data)
+  return c.json(okRes(user))
+}).get('/', async (c) => {
+  const users = await userService.findMany({})
+  return c.json(okRes(users))
+}).get('/info', async (c) => {
+  // 从token中获取用户ID，这里暂时mock
+  const userId = 1
+  const user = await userService.findById(userId)
+  return c.json(okRes({ userInfo: user }))
+}).put('/:id', zValidator('json', z.object({
+  nickname: z.string().optional(),
+  email: z.string().optional(),
+  avatar: z.string().optional(),
+})), async (c) => {
+  const id = Number(c.req.param('id'))
+  const data = await c.req.json()
+  const user = await userService.update(id, data)
+  return c.json(okRes(user))
+}).delete('/:id', async (c) => {
+  const id = Number(c.req.param('id'))
+  await userService.delete(id)
+  return c.json(okRes(null))
+})
 
 export default app

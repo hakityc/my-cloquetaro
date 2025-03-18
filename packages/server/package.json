@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "predeploy": "wrangler d1 execute my-cloquetaro --file ./prisma/migrations/*/migration.sql",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "@hono/node-server": "^1.2.0",

@@ -3,14 +3,8 @@ import "./App.css";
 import { client } from "./api";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
-
-const Home = () => (
-  <div className="content">
-    <h1>Rsbuild with React</h1>
-    <p>Start building amazing things with Rsbuild.</p>
-  </div>
-);
 
 const App = () => {
   return (

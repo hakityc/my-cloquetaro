@@ -1,0 +1,30 @@
+name = "my-cloquetaro"
+main = "packages/server/dist/index.js"
+compatibility_date = "2025-03-17"
+compatibility_flags = ["nodejs_compat"]
+account_id = "221617d49b0255edff33e5cd73b08eb5"
+
+[build]
+command = "pnpm install && pnpm --filter ./packages/server build && pnpm --filter ./packages/client build"
+cwd = "."
+
+[site]
+bucket = "packages/client/dist"
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[env.development]
+name = "my-cloquetaro-dev"
+vars = {NODE_ENV = "development", DATABASE_URL = "file:./dev.db" }
+
+[env.production]
+name = "my-cloquetaro-prod"
+vars = { NODE_ENV = "production", DATABASE_URL = "file:./prod.db?connection_limit=1&socket_timeout=10" }
+
+[[d1_databases]]
+binding = "DB"
+database_name = "my-cloquetaro"
+database_id = "f65a1feb-806c-47c6-8f90-8beaec40a1f6"
+migrations_dir = "prisma/migrations" 

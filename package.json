@@ -5,6 +5,21 @@
   "scripts": {
     "dev:client": "pnpm --filter @test-hono/client dev",
     "dev:server": "pnpm --filter @test-hono/server dev",
-    "dev": "pnpm -r --parallel dev"
+    "dev": "pnpm -r --parallel --no-bail dev",
+    "build:client": "pnpm --filter @test-hono/client build",
+    "build:server": "pnpm --filter @test-hono/server build",
+    "build": "pnpm -r build"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250313.0",
+    "prisma": "^6.5.0",
+    "wrangler": "^4.1.0"
+  },
+  "dependencies": {
+    "@planetscale/database": "^1.19.0",
+    "@prisma/adapter-d1": "^6.5.0",
+    "@prisma/adapter-planetscale": "^6.5.0",
+    "@prisma/client": "6.5.0",
+    "mysql2": "^3.13.0"
   }
 }
