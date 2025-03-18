@@ -20,13 +20,13 @@ head_sampling_rate = 1 # optional. default = 1.
 # 开发环境配置
 [env.development]
 name = "my-cloquetaro-dev"
-vars = { NODE_ENV = "development" }
+vars = {NODE_ENV = "development",DATABASE_URL = "file:./dev.db" }
 
 [env.production]
 name = "my-cloquetaro-prod"
-vars = { NODE_ENV = "production" }
+vars = { NODE_ENV = "production", DATABASE_URL = "file:./prod.db?connection_limit=1&socket_timeout=10" }
 
-# 如果需要绑定 KV 存储，取消下面的注释并修改名称
-# [[kv_namespaces]]
-# binding = "MY_KV"
-# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+[[d1_databases]]
+binding = "DB"
+database_name = "my-cloquetaro"
+database_id = "f65a1feb-806c-47c6-8f90-8beaec40a1f6"
