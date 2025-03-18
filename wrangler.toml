@@ -10,7 +10,6 @@ cwd = "."
 
 [site]
 bucket = "packages/client/dist"
-entry-point = "packages/server"
 
 [observability]
 enabled = true
